@@ -1,0 +1,850 @@
+---
+title: "Factorial experiments"
+author: "Pedro J. Aphalo"
+date: "26 September 2017"
+output:
+  slidy_presentation: default
+  ioslides_presentation: default
+  beamer_presentation: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Introduction
+
+In this course, until now we have seen experiments with one set of
+treatments under comparison, the treatments not being arranged in
+any particular way. These experiments had only one factor.
+
+However we frequently wish to examine together the effects of
+several different types of modification to our system, for example
+the effects of changes of pressure, temperature, and proportions
+of reactants on a chemical process.
+
+In this example each treatment consists of a combination of a
+temperature, a pressure, and a set of concentrations for the
+reactants.
+
+In general, in factorial experiments each treatment consists of a
+combination of what are called _factor levels_.
+
+## Advantages
+
+The simultaneous study of the effects of several factors in one
+experiment may save work but more importantly allows us to study
+how the different factors affect each other.
+
+A factorial experiment is more than the sum of the corresponding
+simple experiments.
+
+We shall call each basic treatment a _factor_ and the
+number of possible forms of a factor the number of _levels_
+for that factor.
+
+A particular combination of one level from each factor determines
+a _treatment_.
+
+The experiment as a whole is called a _factorial
+experiment_ if all, all nearly all factor combinations are of
+interest.
+
+## Example
+
+A classical example is a fertiliser trial with three factors, N,
+P, and K fertilisers. In the simplest case each type of fertiliser
+is either absent or present at a standard rate. There are then
+eight treatments:
+
+Nitrogen | Phosporus | Potasium | Treatment
+-------- | --------- | -------- | ---------
+no N      | no P     | no K   | treatment 1
+no N      | some P     | no K   | treatment 2
+no N      | no P     | some K   | treatment 3
+no N      | some P     | some K   | treatment 4
+some N      | no P     | no K   | treatment 5
+some N      | some P     | no K   | treatment 6
+some N      | no P     | some K   | treatment 7
+some N      | some P     | some K   | treatment 8
+
+This is an experiment with three factors, each at two levels. It
+is convenient to say that it is a $2 \times 2 \times 2$
+experiment.
+
+A factorial experiment in which each combination of factor levels
+is used the same number of times is called a \textsl{complete
+factorial experiment}.
+
+What are the advantages of a factorial experiment? We will use the
+example above for this discussion, assuming $n=6$.
+
+## Interaction I
+
+There are two cases:
+
+1. The additional yield obtained by changing from N absent to N
+present is, to a good approximation, the same for all levels of P
+and K, and the same is true when P, K take the place of N.
+
+In this case we say that in this scale of measurement N, P, and K
+do not interact.
+
+1. There may be interaction between two or more of the factors.
+For example there may be no gain from using N unless P is present
+too, and so on.
+
+Now in the first case (no interaction) we can estimate the
+increase in yield caused by changing from N absent to N present by
+taking the difference of the mean of the 24 observations with N
+present, minus the mean of the 24 observations with N absent.
+
+Therefore we get the precision that we would have got if the full
+48 plots had been devoted to the test of N.
+
+## Interaction II
+
+The advantages of the factorial approach are even more marked when
+interactions are present.
+
+In addition to the averages just considered, it is possible to
+examine any particular factor combinations of interest. For
+example we can estimate separately the effect of N, first with P
+absent and then with P present, and so on.
+
+If we do separate experiments for N, P, and K, we must, say when
+studying N, fix the levels of P and K. If the levels of P and K
+are different from those of final practical interest results can
+be misleading.
+
+Information obtained from a factorial experiment on how the
+treatments interact with one another is of value, not only in
+reaching a decision about which combination is best, but also in
+reaching some insight as to how the treatments "work".
+
+Another advantage is that factorial experiments allow the range of
+validity of the conclusions to be extended in a convenient way.
+
+## Advantages
+
+In summary, factorial experiments have, compared with the one
+factor at a time approach, the advantages
+
+1. of giving greater precision for estimating overall factor
+effects,
+2. of enabling interactions between different factors
+to be explored, and
+3. of allowing the range of validity of the
+conclusions to be extended by the insertion of additional factors.
+
+This is not a recommendation for the regular use of large
+factorial experiments with many factors as they are difficult to
+carry out, and higher order interactions difficult to interpret.
+
+In many circumstances a series of smaller (possibly factorial)
+experiments may be more profitable to get an understanding of the
+"workings" of the system.
+
+## Main effects _vs._ interactions
+
+The effects of factors by themselves on the response are called
+_main effects_ (_päävaikutukset_), and the combined
+effects of factors are called _interactions_
+(_yhdysvaikutukset_)
+
+If in a factorial experiment interactions are not significant, it
+does not mean that the experiment has failed or that a bad design
+has been chosen. It just means that the factors in question affect
+the response variable independently of each other.
+
+## Example
+
+We do a crop experiment in which the response variable is grain
+yield. The experimental factors are A = irrigation, and B =
+fertilisation.
+
+The effects under study are:
+
+1. Main effect of irrigation on yield.
+1. Main effect of fertilisation on yield.
+1. Interaction of irrigation and fertilisation on yield.
+
+Interaction between A and B means that the effect of A depends on
+the level of B. For example if
+
+* With no irrigation $\rightarrow$ fertilisation decreases yield...
+
+* and with irrigation $\rightarrow$ fertilisation improves yield...
+* then there is an interaction between irrigation and fertilisation.
+
+Let us assume that irrigation has two levels ($A_1$, and $A_2$),
+and that fertilisation has three levels ($B_1$, $B_2$, and $B_3$). The
+experiment has $2 \times 3 = 6$ different treatments.
+
+           | $B_1$     | $B_2$    | $B_3$  
+ --------- | --------- | -------- | ---------
+    $A_1$  | $A_1B_1$  | $A_1B_2$ | $A_1B_3$  
+    $A_2$  | $A_2B_1$  | $A_2B_2$ | $A_2B_3$ 
+    
+## Profile plots
+
+The different effects can be checked graphically drawing
+_profiles_.
+
+We draw the group (cell) means as a function of the level of
+fertilisation $B$, and join with lines the six points according to
+the level of irrigation.
+
+The effect of A shows in the profile plot as two lines at
+different height, for example:
+
+![alt text][factorial2]
+
+## Profile
+
+If there is a main effect of B, the average of the lines is not
+horizontal, for example:
+
+![alt text][factorial3]
+
+## Profile
+
+If there is an interaction the profiles go in different
+directions, for example:
+
+![alt text][factorial1]
+
+## Profile
+
+Note: Which factor corresponds to which axis can be freely
+decided. If we exchange the axes, we would have three lines, one
+for each level of B. The interpretation does not change.
+
+Summary: With B on horizontal axis and A on vertical axis. From
+the profile plot we can conclude about the effects:
+
+* Lines in different directions $\Leftrightarrow$ interaction
+* Lines at different height $\Leftrightarrow$ main effect of A
+* The average of the lines not horizontal $\Leftrightarrow$
+main effect of B
+
+##
+
+![alt text][factorial5]
+![alt text][factorial6]
+
+![alt text][factorial7]
+![alt text][factorial8]
+
+![alt text][factorial9]
+![alt text][factorial10]
+
+## Number of factors
+
+A factorial experiment can have more than two factors. However,
+the number of effects and treatments swells and the interpretation
+becomes more difficult.
+
+An experiment with three factors A, B, and C has seven effects,
+the three main effects, the AB, AC, and BC interactions, and the
+ABC interaction.
+
+To facilitate interpretation ``unnecessary'' effects can be left
+out, but this decision should be taken before looking at the data.
+
+As the number of effects increases, the number of $F$ tests
+increases, and although contrasts are set before looking at the
+data, the probability of getting at least one significant result
+because of random variation in the samples increases.
+
+## Fixed effects model
+
+We will look at a balanced two factor design. Being factors A and
+B fixed and having A, $a$ levels A$_1$, A$_2$, \ldots, A$_a$, and
+B, $b$ levels B$_1$, B$_2$, \ldots, B$_b$. From this it follows
+that there are $ab$ treatments (or cells in the table). If we have
+$n$ observations (replicates) in each cell, then there are in
+total $abn$ observations. In addition we assume that the design is
+completely randomised. This design is handled with _two-way ANOVA_
+(_kaksisuuntainen varianssianalyysi_).
+
+       | B$_1$ | B$_2$ |  $\cdots$ | B$_b$
+------ | ----- | ----- | --------- | -------
+ A$_1$ | $n$   | $n$   |  $\cdots$  | $n$
+ A$_2$ | $n$   | $n$   |  $\cdots$  | $n$
+ $\vdots$ | $\vdots$ | $\vdots$ | $\ddots$ | $\vdots$
+ A$_a$ | $n$   | $n$   |  $\cdots$  | $n$
+
+## Model
+
+The model corresponding to this design is
+
+$$x_{ijk} = \mu + \alpha_i + \beta_j + (\alpha\beta)_{ij} + \epsilon_{ijk}$$
+
+where $x_{ijk}$ = observation from experimental unit $k$ from
+treatment A$_i$B$_j$ ($k = 1, 2, \ldots, n$),
+$\mu$ = overall mean,
+$\alpha_i$ = main effect of factor level A$_i$,
+$\beta_j$ = main effect of factor level B$_j$,
+$(\alpha\beta)_{ij}$ = interaction of factor levels A$_i$ and
+B$_j$,
+and
+$\epsilon_{ijk}$ = residual corresponding to observation $ijk$.
+
+We assume that the residuals $\epsilon_{ijk}$ are independent and
+$\epsilon_{ijk} \sim N(0,\sigma^2)$ (for all $i$ and $j$).
+
+We assume for the effect parameters that
+$\sum_i \alpha_i = 0$,\\ $\sum_j \beta_j = 0$,
+and
+$\sum_i(\alpha\beta)_{ij} = \sum_j(\alpha\beta)_{ij} = 0$.
+
+## Estimation
+
+We first calculate cell, row and column means and the overall
+mean.
+
+       | B$_1$               | B$_2$               | $\cdots$ | B$_j$               | $\cdots$ | B$_b$               | 
+------ | ------------------- | ------------------- | -------- | ------------------- | -------- | ------------- |
+  A$_1$ | $\overline{x}_{11}$ | $\overline{x}_{12}$ | $\cdots$ | $\overline{x}_{1j}$ | $\cdots$ | $\overline{x}_{1b}$ | $\overline{x}_{1\cdot}$ 
+ A$_2$ | $\overline{x}_{21}$ | $\overline{x}_{22}$ | $\cdots$ | $\overline{x}_{2j}$ | $\cdots$ | $\overline{x}_{2b}$ | $\overline{x}_{2\cdot}$ 
+ $\vdots$ | $\vdots$         | $\vdots$            | $\ddots$ | $\vdots$            | $\ddots$ | $\vdots$            | $\vdots$ 
+ A$_i$ | $\overline{x}_{i1}$ | $\overline{x}_{i2}$ | $\cdots$ | $\overline{x}_{ij}$ | $\cdots$ | $\overline{x}_{ib}$ | $\overline{x}_{i\cdot}$ 
+ $\vdots$ | $\vdots$         | $\vdots$            | $\ddots$ | $\vdots$            | $\ddots$ | $\vdots$            | $\vdots$ 
+ A$_a$ | $\overline{x}_{a1}$ | $\overline{x}_{a2}$ | $\cdots$ | $\overline{x}_{aj}$ | $\cdots$ | $\overline{x}_{ab}$ | $\overline{x}_{a\cdot}$
+       | $\overline{x}_{\cdot 1}$ | $\overline{x}_{\cdot 2}$ | $\cdots$ | $\overline{x}_{\cdot j}$ | $\cdots$ | $\overline{x}_{\cdot b}$ | $\overline{x}$ 
+
+where
+$\overline{x}_{ij} = \frac{1}{n} \sum_k x_{ijk}$, mean of cell $ij$
+$\overline{x}_{i\cdot} = \frac{1}{b} \sum_j \overline{x}_{ij}$, mean of row $i$
+$\overline{x}_{\cdot j} = \frac{1}{a} \sum_i \overline{x}_{ij}$, mean of column $j$
+$\overline{x} = \frac{1}{abn} \sum_i \sum_j \sum_k x_{ijk}$, overall mean
+
+from these we obtain the estimators
+$\hat{\mu} = \overline{x}$,\\
+$\hat{\alpha_i} = \overline{x}_{i\cdot} - \overline{x}, i=1, \ldots, a$,
+$\hat{\beta_j} = \overline{x}_{\cdot j} - \overline{x}, j=1, \ldots, b$,
+$(\widehat{\alpha\beta})_{ij} = \overline{x}_{ij} - \overline{x}_{i\cdot} - \overline{x}_{\cdot j} + \overline{x}$,
+
+and from these we calculate the residual of each observation as
+$\epsilon_{ijk} = x_{ijk} - \overline{x}_{ij}$
+(the difference to its own cell's mean).
+
+As for the one-way analysis we can now write one observation's
+difference to the whole sample mean $\overline{x}$ as
+\begin{eqnarray*}
+ \underbrace{x_{ijk} - \overline{x}}_1 &=&
+ \underbrace{(\overline{x}_{i\cdot} - \overline{x})}_2 +
+ \underbrace{(\overline{x}_{\cdot j} - \overline{x})}_3 +\\
+ &&\underbrace{(\overline{x}_{ij} - \overline{x}_{i\cdot} - \overline{x}_{\cdot j} + \overline{x})}_4 +
+ \underbrace{(x_{ijk} - \overline{x}_{ij})}_5.
+\end{eqnarray*}
+where\\
+\begin{small}
+\begin{enumerate}
+\item difference between observation $ijk$ and the overall mean
+\item difference between group $i$ and the overall mean
+\item difference between group $j$ and the overall mean
+\item difference between cell $ij$ and the mean of groups $i$ and $j$
+\item difference between observation $ijk$ and the mean of cell $ij$
+\end{enumerate}
+\end{small}
+
+\foilhead{Example}
+
+We continue with the example about the woman called Sorja. In this
+research the height of people from two localities is compared. One
+locality (U) is near an uranium mine, and the other (C) is except
+for the mine a totally similar town.
+
+The objective is to find out if the mine has affected the height
+growth of the local people. (Pseudoreplication!)
+
+So, we have two factors, gender as before, and locality.
+
+Both factors are clearly fixed, and with two levels.
+
+As in the previous example we assume that the mean height of the
+whole group of adult people is $\overline{x} = 175$ cm, and that
+of the men in the group is $\overline{x}_\textrm{\male} = 180$ cm,
+and that of women $\overline{x}_\textrm{\female} = 170$ cm. One
+observation, corresponding to the woman called Sorja is $x = 173$
+cm. We also assume that in the town U, where Sorja lives
+$\overline{x}_\textrm{U} = 174$ cm, and that
+$\overline{x}_\textrm{U}\textrm{\female} = 168$ cm.
+
+So
+\begin{eqnarray*}
+ \underbrace{173 - 175}_1 &=& \underbrace{(170 - 175)}_2 +
+     \underbrace{(174 - 175)}_3 +\\
+        &&\underbrace{(168 - 174 - 170 + 175)}_4 + \underbrace{(173 -
+     168)}_5
+\end{eqnarray*}
+where\\
+\begin{small}
+\begin{enumerate}
+\item difference between Sorja and the overall mean
+\item difference between women and the overall mean
+\item difference between U-town folk and the overall mean
+\item difference between U-town women and U-town folk and women
+\item difference between Sorja and U-town women
+\end{enumerate}
+\end{small}
+
+\newpage
+In a factorial experiment, to each effect we give its own null
+hypothesis:\\
+{
+\setlength{\extrarowheight}{2pt}
+\begin{tabular}{lll}
+$\Hn^\textrm{A}:$ & $\alpha_i = 0$ & for all $i$, i.e.\ no main effect of A\\
+$\Hn^\textrm{B}:$ & $\beta_j = 0$ & for all $j$, i.e.\ no main effect of B\\
+$\Hn^{\textrm{AB}}:$ & $(\alpha\beta)_{ij} = 0$ & for all $i, j$, i.e.\ no interaction\\
+\end{tabular}
+}
+
+For each factor, it is enough that one level has an effect to
+reject \Hn. For example $\alpha_1 \neq 0$. So within each factor
+we have the same situation as in one-way ANOVA, we do not know
+which is the appropriate \Ha, and we use the general \Ha: `at
+least one is different'.
+
+The total variation is partitioned as sums of squares in the same
+way as for the one-way ANOVA:
+\begin{eqnarray*}
+SS_T &=& \sum_i \sum_j \sum_k (x_{ijk} - \overline{x})^2\\
+ &=& \underbrace{SS_\textrm{A} + SS_\textrm{B} + SS_\textrm{AB}}_{=SS_\textrm{TR}} + SS_\textrm{E}
+\end{eqnarray*}
+where
+{
+\setlength{\extrarowheight}{2pt}
+\begin{tabular}{lll}
+$SS_A$ &$\rightarrow$& main effect of A,\\
+$SS_B$ &$\rightarrow$& main effect of B,\\
+$SS_{AB}$ &$\rightarrow$& interaction between A and B,\\
+$SS_E$ &$\rightarrow$& residual.\\
+\end{tabular}
+}
+
+\newpage
+The degrees of freedom of the sums of squares are:
+\begin{eqnarray*}
+df_T &=& N - 1 = abn - 1,\\
+df_A &=& a - 1,\\
+df_B &=& b - 1,\\
+df_{AB} &=& (a - 1) (b - 1), \mbox{and}\\
+df_E &=& ab(n - 1).
+\end{eqnarray*}
+So that $df_A + df_B + df_{AB} + df_E = abn - 1 = df_T$.
+
+As in one-way ANOVA, also now the variances from the different
+sources are used to test the different null hypotheses. In this
+way we obtain several F-tests (for the fixed effects model).
+
+{ \setlength{\extrarowheight}{8pt}
+\begin{tabular}{ll}
+Main effect of A & $F = \frac{MS_A}{MS_E} \sim F(df_A, df_E),$\\
+Main effect of B & $F = \frac{MS_B}{MS_E} \sim F(df_B, df_E),$\\
+Interaction of A and B & $F = \frac{MS_{AB}}{MS_E} \sim F(df_{AB}, df_E),$\\
+\end{tabular}
+}
+
+where $MS_* = \frac{SS_*}{df_*}$, * = E, A, B, or AB.
+
+\newpage
+The ANOVA table now looks like this:\\[1cm]
+{\setlength{\extrarowheight}{8pt}
+\begin{small}
+\begin{tabular}{lccccc}
+\hline
+sv & Sum Sq. & df & Mean Sq. & F & P \\
+\hline
+A       & $SS_A$  & $a-1$ & $MS_A$ & $\frac{MS_A}{MS_E}$ & \\
+B       & $SS_B$  & $b-1$ & $MS_B$ & $\frac{MS_B}{MS_E}$ & \\
+AB      & $SS_{AB}$  & $(a-1)(b-1)$ & $MS_{AB}$ & $\frac{MS_{AB}}{MS_E}$ & \\
+error   & $SS_E$  & $ab(n-1)$ & $MS_E$ & & \\
+\hline
+Total                & $SS_T$  & $abn-1$ &  &  & \\
+\hline
+\end{tabular}
+\end{small}
+}
+
+where `sv' stands for source of variation.
+
+
+\foilhead{Simple effects}
+
+Profile plots should be always drawn, because strong interactions
+can distort the analysis of the main effects.
+
+When the interaction is strong, the main effects should not be
+tested. If one is interested in the main effects, the
+\textsl{simple effects} (\textit{yksinkertaiset vaikutukset})
+should be studied.
+
+We study the effect of A, separately for each level of B. Ellipses
+in figure.
+
+\includegraphics{factorial4}
+
+\newpage
+The difference with one-way ANOVA is that we use $MS_E$ from the
+whole data set. We obtain in this way $F_j=MS_{A_j}/MS_E$, that if
+\Hn is valid comes from the distribution $F(df_{A}, df_E)$.
+
+This needs some calculations by hand and an $F$-table.
+
+$MS_{A_j}$ and the corresponding $df_A$ we take from the one-way
+ANOVA table for one level of B, and $MS_E$ and $df_E$ from the
+original two-way ANOVA table. $P$-value is looked up from a table.
+
+\newpage
+More formally, what we are doing is a different partition of
+$SS_\textrm{TR}$ so that, if we want to study the effect of B at
+each level of A, we have for our $2 \times 3$ example
+
+\begin{eqnarray*}
+SS_\textrm{T} &=& \sum_i \sum_j \sum_k (x_{ijk} - \overline{x})^2\\
+ &=& \underbrace{SS_\textrm{A} + SS_\textrm{B(A$_1$)} + SS_\textrm{B(A$_2$)}}_{=SS_\textrm{TR}} + SS_\textrm{E}
+\end{eqnarray*}
+
+The degrees of freedom of the sums of squares are:
+\begin{eqnarray*}
+df_\textrm{T} &=& N - 1 = abn - 1,\\
+df_\textrm{A} &=& a - 1,\\
+df_\textrm{B(A$_1$)} &=& b - 1,\\
+df_\textrm{B(A$_2$)} &=& b - 1, \mbox{\ and}\\
+df_\textrm{E} &=& ab(n - 1).
+\end{eqnarray*}
+So that $df_\textrm{A} + df_\textrm{B(A$_1$)} + df_\textrm{B(A$_2$)} + df_E = abn - 1 = df_T$.
+
+\newpage
+Another different partition of $SS_\textrm{TR}$ is needed if we
+want to study the effect of A at each level of B, we have for our
+$2 \times 3$ example
+
+\begin{eqnarray*}
+SS_\textrm{T} &=& \sum_i \sum_j \sum_k (x_{ijk} - \overline{x})^2\\
+ &=& \underbrace{SS_\textrm{A(B$_1$)} + SS_\textrm{A(B$_2$)} + SS_\textrm{A(B$_3$)} + SS_\textrm{B}}_{=SS_\textrm{TR}} + SS_\textrm{E}
+\end{eqnarray*}
+
+The degrees of freedom of the sums of squares are:
+\begin{eqnarray*}
+df_\textrm{T} &=& N - 1 = abn - 1,\\
+df_\textrm{A(B$_1$)} &=& a - 1,\\
+df_\textrm{A(B$_2$)} &=& a - 1,\\
+df_\textrm{A(B$_3$)} &=& a - 1,\\
+df_\textrm{B} &=& b - 1, \mbox{\ and}\\
+df_\textrm{E} &=& ab(n - 1).
+\end{eqnarray*}
+So that $df_\textrm{A(B$_1$)} + df_\textrm{A(B$_2$)} + df_\textrm{A(B$_3$)} + df_\textrm{B} + df_E = abn - 1 = df_T$.
+
+
+\foilhead{Random effects}
+
+As we have seen in a random effects model we assume that the
+levels of the factor(s) are a random sample from a population of
+possible levels. In contrast in the fixed effects model we assume
+that all (interesting) levels are included in the experiment and
+that a repetition of the experiment would include the same levels.
+In the case of factorial experiments the interpretation, and
+conclusions derived, are similar to those for one-way ANOVA.
+
+Remember the assumptions: normality and homoscedasticity. If in
+the experiment (and model) there are \textsl{random effects}
+(\textit{satunnaisvaikutuksia}), they add to the random variation.
+
+\newpage
+When dealing with more than one factor the distinction between
+fixed effects and random effects models becomes essential, because
+not only the interpretation but also the $F$ test calculation is
+different.
+
+The tests for a fixed effects model have to be changed for a
+random effects model: the $F$-value is calculated differently. If
+both factors are random
+
+{ \setlength{\extrarowheight}{8pt}
+\begin{tabular}{ll}
+Main effect of A & $F = \frac{MS_\textrm{A}}{MS_\textrm{AB}} \sim F(df_\textrm{A}, df_\textrm{AB}),$\\
+Main effect of B & $F = \frac{MS_\textrm{B}}{MS_\textrm{AB}} \sim F(df_\textrm{B}, df_\textrm{AB}),$\\
+Interaction of A and B & $F = \frac{MS_\textrm{AB}}{MS_\textrm{E}} \sim F(df_\textrm{AB}, df_\textrm{E}),$\\
+\end{tabular}
+}
+
+following the indicated distribution if the null hypotheses are true.
+
+\newpage
+If one factor is random, for example A, and the other one, B, is
+fixed we call it a \textsl{mixed model} (\textit{sekamalli}). Then
+
+{ \setlength{\extrarowheight}{8pt}
+\begin{tabular}{ll}
+Main effect of A & $F = \frac{MS_A}{MS_E} \sim F(df_A, df_E),$\\
+Main effect of B & $F = \frac{MS_B}{MS_{AB}} \sim F(df_B, df_{AB}),$\\
+Interaction of A and B & $F = \frac{MS_{AB}}{MS_E} \sim F(df_{AB}, df_E),$\\
+\end{tabular}
+}
+
+following the indicated distribution if the null hypotheses are
+true.
+
+\foilhead{Multiple comparisons, Tukey's test}
+
+If there is no significant interaction but a significant main
+effect for a factor that has more than two levels it is possible
+to determine between which levels the difference(s) occur(s) for
+example using the Tukey test.
+
+If there is a significant interaction, rather than comparing
+levels, we are interested in comparing individual cell means to
+find out which pairs of treatments in particular are significantly
+different from each other. The Tukey test can also be used in this
+case.
+
+Tukey's test tests for differences in treatment means.
+
+\Hn: $\mu_i=\mu_j$, were the subscripts denote any possible pair
+of groups.
+
+As with the LSD, we calculate a difference `measuring stick', and
+differences larger than this stick are considered significant at the
+chosen $\alpha$ level.
+
+For those smaller than the `stick', \Hn is not rejected.
+
+\newpage
+In the case of a balanced experiment the `measuring stick' or  HSD
+(honestly significant difference) is
+\begin{equation*}
+W_k = Q_\alpha(k, N-k)\sqrt{MS_E/n},
+\end{equation*}
+where $k$ is the number of treatments, $\alpha$ is the level of
+significance, $N = nk$ is the total number of observations in the
+experiment, $n$ is sample size, $MS_E$ is the error mean square of
+the factorial experiment (from the ANOVA table) and $Q_\alpha(k,
+N-k)$ is the $1-\alpha$ quantile from the \textsl{studentized
+range} distribution at the chosen level of significance $\alpha$.
+(note: $N-k=kn-k=df_E.$)
+
+If the samples in the pair are not of the same size, $n$ is
+replaced in the equation above by the harmonic mean of $n_i$ and
+$n_j$
+\begin{equation*}
+\frac{2}{\frac{1}{n_i}+\frac{1}{n_j}}
+\end{equation*}
+
+\newpage
+If we want to test the differences between the levels of, say, A,
+in a two-way ANOVA the equation becomes
+\begin{equation*}
+W_k = Q_\alpha(a, N-k)\sqrt{MS_E/bn},
+\end{equation*}
+and we compare this stick to the differences between pairs of
+overall means for each of the levels of A.
+
+Note: Tukey's test is in no way tied to factorial experiments, it
+can be also used for multiple comparisons in one-way ANOVA. There
+are also other comparable tests.
+
+\foilhead{Dose response curves}
+
+\textsl{Dose response curve} or \textsl{response curve} is used to
+refer to experiments in which the levels of a factor represent
+different quantities of a substance or of energy applied to the
+experimental units.
+
+We have, for example, a one-way ANOVA where the factor levels are
+five different ``doses'' (daily quantity of energy) of
+ultraviolet-B radiation and the response variable is the
+concentration of a secondary metabolite in the plants treated.
+
+Multiple comparison tests are not the right tool for this problem,
+because we are not interested in comparing all possible pairs of
+doses.
+
+At least such a test would be difficult to interpret and results
+difficult to present.
+
+If we have a zero control, one could think about comparing the
+different doses to this control. However, there is a serious
+problem: which doses are significantly different from the control
+will depend on the number replicates used.
+
+In fact, we are interested in the curve as a whole. The slope and
+shape of the response curve are useful for its description and
+interpretation.
+
+The expected value for the slope will not change with the number
+of replicates.
+
+To obtain this information we can use polynomial contrasts in
+ANOVA (if the levels are regularly spaced) or regression methods.
+
+If we have several doses of the same thing, all levels should
+contribute to the test not just two as in multiple comparisons.
+
+If we want to know if ultraviolet-B radiation has an effect we do
+not want to base our test on whether level 5 is different to level
+1, rather we want to use information from all levels.
+
+On the other hand we want a more detailed conclusion than simply
+saying that at least one unspecified dose (level) has an effect,
+as we get from the $F$ test in a one-way ANOVA.
+
+\newpage
+With response curve analysis using polynomial contrasts we
+partition the $SS_\textrm{TR}$ into one $df$ components, each
+corresponding to a different term (linear, quadratic, cubic, etc.)
+of the polynomial.
+
+The maximum number of one degree of freedom terms into which the
+$SS_\textrm{TR}$ can be partitioned depends on the number of
+levels we have (because $df_\textrm{TR} = k - 1$).
+
+We can infer from the different terms the shape of the response:
+\begin{itemize}
+\item linear $\rightarrow$ low-dose responses differ from those at
+high dose,
+\item quadratic $\rightarrow$ evidence for a hump or a
+trough somewhere between low and high dose responses, and
+\item higher degree terms $\rightarrow$ more complex shapes.
+\end{itemize}
+
+\foilhead{Marginality restrictions}
+
+We have said that in a factorial experiment the researcher may
+want to include only interesting terms in the model.
+
+Those terms not included, for example higher order interactions
+like $ABCD$ in a factorial experiment with four factors, do not
+get a $SS$ computed separately, but instead the excluded source of
+variation gets pooled with the residuals ($SS_\textrm{E}$).
+
+In linear models sometimes not all terms are on an equal footing
+as far as inclusion or removal is concerned. This is clearly the
+case in factorial experiments.
+
+The main effects $A$ and $B$ are marginal to their interaction.
+
+A two factor interaction $AB$ is marginal to any higher-order
+interaction that contains $A$ and $B$.
+
+\newpage
+To get an interpretable result, marginal terms should always be
+included in the model.
+
+For example do not fit a model that includes $A$ and $AB$ terms
+but not $B$.
+
+\foilhead{SPSS: two-, three-way, etc. ANOVA}
+
+The tests for a factorial experiment are done from the dialogue
+box that appears after selecting:\\
+`Analyze $\rightarrow$ General Linear Model $\rightarrow$
+Univariate'
+
+\includegraphics{univariate}
+
+The response variable is moved to `Dependent Variable', and random
+and fixed factors to the corresponding fields.
+
+If any interaction term is left out of the model, the model should
+be described in the `Custom' dialogue which appears after pressing
+the `Model' button.
+
+The `Plots' dialogue is used to define the profile plots, putting
+in the fields `Horizontal axis', `Separate Lines' and `Separate
+Plots' the different factors, and then pressing `Add'.
+
+Multiple comparisons are selected in the `Post Hoc' dialogue.
+
+\newpage
+In the `Output' window we get the ANOVA table:
+
+\begin{small}
+\begin{verbatim}
+          Tests of Between-Subjects Effects
+Dependent Variable: TOTALDW
+---------------------------------------------------
+Source           Type III  df  Mean Sq.  F     Sig.
+                  Sum Sq.
+---------------------------------------------------
+Corrected Model   68644    3    22881    5.0  .006
+Intercept       8091258    1  8091258 1786.7  .000
+FR                 1391    1     1391     .3  .584
+NUTRI             66339    1    66339   14.6  .001
+FR * NUTRI          913    1      913     .2  .657
+Error            126796   28     4528
+Total           8286699   32
+Corrected Total  195440   31
+---------------------------------------------------
+a   R Squared = .351 (Adjusted R Squared = .282)
+\end{verbatim}
+\end{small}
+
+The $P$-value for the interaction is in the row `FR * NUTRI', and
+those for the main effects in their own rows. To test the simple
+effects we would need the values from the columns titled $df$ and
+mean square in this table, but in this case there is no
+interaction.
+
+\newpage
+If we want to do tests equivalent to one-way ANOVA tests, we press
+`Contrasts', and define the contrast for each factor of interest.
+
+\includegraphics{univ_contrasts}
+
+`Simple Contrasts' solves the normal case (select a factor, choose
+`Simple' and then press `Change') in which all other factor levels
+are compared to a control level, which should be numbered either
+first or last (`Reference Category: Last/First').
+
+`Polynomial Contrast' does a response curve analysis contrast
+(select a factor, choose `Polynomial' then press `Change'). In
+this case the significance of linear, quadratic, cubic, etc.\
+terms is computed.
+
+\foilhead{SPSS and residuals}
+
+If we want to check if the residuals are normally distributed, and
+that variance is homogeneous we need to save the residuals and
+predicted values, and then plot them.
+
+This is done in two stages we first save the residuals and
+predicted values when fitting the model and afterwards plot them
+with the commands in the `Graphs' menu.
+
+\newpage
+In the `Univariate' dialogue we press the `Save' button to open
+the `Univariate: Save' dialogue:
+
+\includegraphics{univ_save}
+
+In this dialogue we choose the type of predicted values and
+residuals to save. (Standardised residuals are scaled to unit
+variance.) Then we press `Continue'. When we press `Ok' the new
+variables are added to the data editor.
+
+\newpage
+The `Q-Q plot' for testing normality is done with `Graphs
+$\rightarrow$ Q-Q', in the dialogue that opens we select the
+variable with the residuals and for `Test Distribution' we choose
+'normal'.
+
+\includegraphics[width=17cm]{QQplot}
+
+For checking homogeneity of variance we do a scatter plot with
+predicted values on the x-axis and residuals on the y-axis.
+
+[factorial1]: figures/factorial1.png "factorial1"
+[factorial2]: figures/factorial2.png "factorial2"
+[factorial3]: figures/factorial3.png "factorial3"
+[factorial4]: figures/factorial4.png "factorial4"
+[factorial5]: figures/factorial5.png "factorial5"
+[factorial6]: figures/factorial6.png "factorial6"
+[factorial7]: figures/factorial7.png "factorial7"
+[factorial8]: figures/factorial8.png "factorial8"
+[factorial9]: figures/factorial9.png "factorial9"
+[factorial10]: figures/factorial10.png "factorial10"

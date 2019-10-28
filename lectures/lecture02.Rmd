@@ -1,0 +1,238 @@
+---
+title: "Lecture 2: Core ideas"
+subtitle: PBIO-03 Design and planning of experiments
+author: "Pedro J. Aphalo"
+date: "6 September, 2017"
+output: 
+  ioslides_presentation: 
+    fig_height: 4
+    fig_width: 6
+    keep_md: yes
+    transition: faster
+    widescreen: yes
+params:
+ d: !r Sys.Date() 
+bibliography: design-exp.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r}
+library(ggplot2)
+```
+
+# Statistics (a reminder)
+
+## Role of Statistics in research
+
+- Design and planning of experiments
+- Exploratory data analysis
+- Final data analysis
+- model fitting
+    * forecasting
+    * tests of hypothesis
+- Range of validity → interpretation
+
+## Widespread misconceptions I
+
+To understand the role of the design of experiments we first need to dispel some misunderstandings.
+
+WRONG
+:   * _Lack of significance in a test can be used to infer lack of effect_.
+    * Yes, you read/heard correctly, this statement is not true!
+    * And this is very easy to demonstrate!
+
+CORRECT
+:   * _Lack of significance in a test means that we are uncertain about the direction of an effect_.
+
+## Widespread misconceptions II
+
+WRONG
+:   * _p_-value is a reflection only/mainly of the properties of the object under study.
+    * Yes, you read/heard correctly!
+    * And it is very easy to demonstrate!
+    
+CORRECT
+:   * _p_-value is a reflection both of the properties of the object under study and of the design and execution of a study.
+   
+## Logic: Large _p_-value $\neq$ no effect
+
+TRUE
+:   * _Significance depends on variability of the parameter estimates_, which depends on:
+    * the number of replicates used, $S^2_{\overline x} = S^2_x / n$
+    * spatial and temporal layout of experimental units (e.g. location and size of plots),
+    * how carefully are measurements done,
+    * the inherent temporal (e.g. weather conditions) or spatial (e.g. soil properties) variation between experimental units.
+
+
+## In words of John W. Tukey
+
+Statisticians classically asked the wrong question—and were willing to answer with a lie, one that was often a downright lie. They asked "Are the effects of A and B different?" and they were willing to answer "no."
+All we know about the world teaches us that the effects of A and B are always different—in some decimal place—for any A and B. Thus asking ``Are the effects different?'' is foolish.
+What we should be answering first is ''Can we tell the direction in which the effects of A differ from the effects of B?'' In other words, can we be confident about the direction from A to B? Is it "up," "down" or "uncertain"?
+The third answer to this first question is that we are "uncertain about the direction"—it is not, and never should be, that we "accept the null hypothesis."
+[@Tukey1991]
+
+## Widespread misconceptions III
+
+FALSE
+:   * Statistics is an exact discipline.
+    * Yes, you read/heard correctly!
+    * And if you have asked for advice probably you have received an array of different answers!
+    
+TRUE
+:   * Statistics is not an exact discipline.
+
+## Biological/practical relevance
+
+TRUE
+:  _p_-value is irrelevant for deciding the importance of a result.
+
+TRUE
+Statistical significance $\neq$ biological significance (e.g. is the metabolic effect detected large enough to be important).
+
+TRUE
+:  Practical relevance of information depends strongly on range of validity (e.g. 1-year- vs. 10-years-long field study; a single clone vs. a random sample from a natural population of plants; a single pathogen strain vs. natural infection).
+
+## Statistics ≠ exact discipline
+
+TRUE
+:  * Statistics is not an exact discipline.
+
+TRUE
+:  * Choosing an analysis method involves subjective decisions about which assumptions are expected to be valid.
+
+TRUE
+:  * Data exploration is an important part of data analysis and once again involves some subjective decisions about what features in the data are interesting.
+
+## In the words of F. Mosteller and J. W. Tukey
+
+… data analysis, like calculations, can profit from repeated starts and fresh approaches; there is not just one analysis for a substantial problem. [@Mosteller1977]
+
+## Why are negative results problematic?
+
+- As we saw earlier, a high _p_-value cannot be directly used as evidence for lack of effect.
+- This means that the general reticence of editors to publish negative results has some basis.
+- However, even though we cannot demonstrate lack of effect (even from the philosophical point of view) we can estimate what size of effects could have been detectable with a certain probability.
+- This is a post mortem statistical power analysis which needs to be always used when attempting to publish negative results (diagnosis of low vs. high sensitivity).
+- The publication bias against negative results is problematic in that it biases the contents of the research literature corpus as a whole.
+
+## So, are _p_-values of any use?
+
+- They are of some use, if taken only as a guide to the quality of the evidence.
+- Nowadays many statisticians prefer confidence intervals to significance tests,
+- and/or model selection based on information criteria (AIC, BIC),
+- there is at least one scientific journal that has banned the use of pp-values!
+
+## ASA statement (on-line 2016-03-07)
+
+The American Statistical Society released an official statement [@Wasserstein2016] against the predominance of significance tests and _p_-values as a core part of Statistics practice and teaching . See also the blog post (After 150 Years, the ASA Says No to _P_-values)[https://matloff.wordpress.com/2016/03/07/after-150-years-the-asa-says-no-to-p-values/] by Norman Matloff. Or I would rather say, restric its use to situations where it is useful.
+
+# Design of experiments 
+
+## Controlling variation
+
+- What is a problem is variation of unknown origin = "noise".
+- If we can identify a source of variation we can remove it from the error term by:
+    * physically controlling it
+    * measuring a variable that quantifies it (e.g. ANCOVA)
+    * using restricted replication protocols that _balance_ the effect of the uncontrolled variation on the different treatments (e.g. design with blocks)
+
+## Reducing estimate variation
+
+- Replication:
+  S2x¯=S2xn
+  
+## Range of validity
+
+- Using a wide range of conditions → increases random variability (e.g. seedlings from seeds from an out-crossing population vs. seeds from a homozygous line vs. a clone from tissue culture)
+- …but it also increases range of validity.
+- Solutions:
+    1. include many replicates,
+    1. use well defined conditions within the range of variation in a factorial design (e.g. several clones, several sites, several planting dates),
+    1. measure the variation before applying the treatments.
+   
+## Matching experiment and aims
+
+- Extrapolation is always dangerous!
+- Organisms perceive and respond to many cues and signals in addition to responding to resource availability.
+- The context in which research is carried out affects usefulness of conclusions for applications.
+- Mechanism is important, but also its regulation under the target situation (e.g. agricultural field or forest) needs to be understood.
+
+## Maximizing return from effort
+
+- Different steps and procedures have different costs.
+- Pooling of samples can very drastically reduce costs in some cases.
+    * If the true replicate is a field plot, unless we are specially interested in quantifying within-plot variation, there is almost no advantage in not pooling all the samples collected in a given plot before analysis.
+    * Of course, there is a risk involved, for example if we include in the pooled sample a contaminated sub-sample, the whole pooled sample needs to be discarded.
+    * Usually growing more plants is cheap, and a very effective way of controlling biological variation.
+
+## Maximizing return from effort
+
+- Assuming that analysis in the lab is costly, and limits the number of samples we can analyse.
+    * An experiment with three true replicates can seem at first sight like unwise to use.
+    * However, if correctly designed, an experiment with three replicates (e.g. blocks), but with each experimental unit composed of 100 or more seedlings, pooled before analysis in the lab, can be extremely powerful at detecting small differences/effects which are consistently present.
+    * This approach also allows using plants with genotypic variation in cases when we want the range of validity to extend to a whole population rather than a single genotype.
+   
+## How many replicates are needed?
+
+- If we can estimate the variance,
+- and know the size of the smallest effect/difference of interest,
+- it is possible to calculate the number of replicates needed.
+    * Usually one can make a guess of the values needed for the computations and add a margin for extra safety,
+    * in many cases a rule-of-thumb is based on earlier research,
+this is usually o.k., but one should be careful to check if the expected effects are of similar size.
+    * one can also apply such calculations to objectively maximize efficiency of use of money or other resources, even in designs with sub-sampling and pooled measurements.
+
+## Planning of data colletion and analysis
+
+- By the time the experiment is started we should already know which statistical methods and tests will be suitable for the data to be collected.
+- The design of an experiment or survey is very tightly linked to how the data can be later analysed.
+- Only good design combined with suitable analysis and good experiment management can provide valid results efficiently.
+- Consistently applied experimental protocols allow comparisons in time, space, and among treatments within a single experiment and among replicate experiments.
+
+# Planning of experiments
+
+## Data collection
+
+- In the same way as bias errors can be caused by the non-random assignment of treatments, measurement protocols can be important sources of bias unless randomised.
+- consider:
+    * time-of-day,
+    * operator,
+    * warming-up of instruments,
+    * calibration drift of instruments,
+    * shelf-life of reagents,
+    * operator tiredness.
+   
+## Planning and good practice
+
+- Includes also all practical aspects, many of which affect the validity and efficiency of an experiment.
+- Experiment protocol:
+    * e.g. good mixing of the growing substrate.
+    * e.g. uniform watering conditions.
+- Preventing disturbances:
+    * e.g. disturbances as simple as an accidental night break in a controlled environment can make an experiment unrepeatable.
+    * e.g. are naturally occurring pathogens part of what we want to study or not?
+    * e.g. do fungicides used have a hormone-like effect on plant metabolism, growth and development?
+   
+## How to be objective
+
+- The human brain is not "programmed" to be objective.
+- It is extremely difficult to use volition to achieve objectivity when emotions are strong.
+- The trick is to feel/understand that every result is equally good:
+    * feel equally happy if results support your hypothesis,
+    * or if they indicate that it should be changed or replaced,
+    * or even if you only learn how to repeat the experiment in a better way.
+- If it is emotionally painful to reject your "pet hypothesis" your brain will not reach an objective conclusion no matter how hard you try!
+
+## Further reading
+
+- The Sunset Salvo [@Tukey1986] is a sobering medicine for those with blind faith in Statistics and the objectivity of data analysis.
+
+- The books Planning of Experiments [@Cox1958] and Statistics and Scientifc Method [@Diggle2011] can be recommended as they focus mainly on the logic behind the different designs at an introductory level.
+
+- The book Statistical Principles for the Design of Experiments [@Mead2012] goes into more depth, especially in relation to calculation procedures for many 'classical' designs.
+
+## References {.smaller}

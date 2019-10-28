@@ -1,0 +1,117 @@
+---
+title: "Lecture 1: Inroduction"
+subtitle: PBIO-03 Design and planning of experiments
+author: "Pedro J. Aphalo"
+date: "5 September 2017"
+output: 
+  ioslides_presentation: 
+    fig_height: 4
+    fig_width: 6
+    keep_md: yes
+    transition: faster
+    widescreen: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r}
+library(ggplot2)
+library(ggpmisc)
+```
+
+# Aims of design of experiments
+
+## Discussion
+
+- Why is design of experiments a sub-discipline of Statistics?
+
+- What do we aim at when we design an experiment?
+
+- What could be the differences between design and planning of experiments?
+
+- After this talk, you will design some experiments working in groups.
+
+## The aims of design of experiments
+
+**Validity**
+
+- The assumptions needed for a valid data analysis must be fulfilled.
+
+**Efficiency**
+
+- The amount and quality of information obtained with a given effort should be maximized.
+
+**Range of validity**
+
+- The data obtained should be representative for the whole scope of intended use of the acquired information (spatial, temporal, genotypic `space').
+
+## Validity: Assumptions
+
+- Assumptions are never "TRUE", but they can sometimes be close enough to being fulfilled.
+- All data analysis procedures depend on some assumptions.
+- Some assumptions are fundamental.
+- Additional assumptions may be required by certain procedures for data analysis.
+- The fewer assumptions made, the more robust are the conclusions obtained.
+
+## Why is bias a problem?
+
+- Bias can be completely confounded with treatment effects.
+- It cannot be measured within an experiment and it cannot be diagnosed based on the collected data.
+- There is no statistical procedure that can rescue or even identify this problem.
+- Bias due to lack of randomization or due to _"subjective randomization"_ or systematic measuring protocols results in _biased (bad) data_ leading to _wrong conclusions_ and **unrepeatable experiments**!
+
+## Avoiding bias
+
+- Randomization of treatment assignment.
+- Randomization of measurement sequences.
+- Randomization of operator assignment.
+- When source of variation is known using restricted randomization (blocks)...
+- ... or quantifying the external cause of the variation for each observation (covariates).
+
+## Detecting accidental bias
+
+- Most effective way is to have the whole study replicated independently by other labs.
+- We can also go quite far by replication in time by same research group if care is taken so that the same "hidden" disturbances are not likely to repeat.
+
+## Irreproducibility of research results
+
+- Sure ways of compromising reproducibility:
+    * consider interdependent observations as replicates ("pseudo-replication"),
+    * add replicates until effects are significant,
+    * delete apparent outliers until significance is reached ("cherry picking"),
+    * choose for publication the "best" replicate from a series of replications of an experiment ("cherry picking"),
+    * not reporting methods in detail, including problems encountered,
+    * making assumptions that are not tenable or are not validated.
+- this is because statistical tests and _p_-values they return are invalidated by bias.
+
+## Reproducibility of research resulst
+
+- Good ways of avoiding gross irreproducibility:
+    * avoid "wanting" a certain outcome (not getting in love with an idea).
+    * use valid designs and protocols in your experiments.
+    * understand the principles of experimental design and always follow them (avoid short cuts).
+   
+## Real pseudoreplication example
+
+Two ANOVAs of the same anatomical data. Response is stomatal density.
+Exciting results with pseudo-replication! (leaves as replicates)
+
+|Effect |	Df  |	Sum Sq	 | Mean Sq| F value |	Pr(>F)|
+|:------|----:|---------:|--------:|--------:|-----:|
+filter	| 5 |	28900	| 5773 | 3.14 |	0.0090 |
+block	| 2	| 24600	| 12292	| 6.69	| 0.0015 |
+Residuals	| 208	| 381914 | 1836	| |
+
+## Real pseudoreplication example
+
+Two ANOVAs of the same anatomical data. Response is stomatal density.
+Boring results with valid analysis! (plots as replicates)
+
+| Effect | Df | Sum Sq | Mean Sq | F value | Pr(>F) |
+|:------|----:|---------:|--------:|--------:|-----:|
+| filter | 5 | 1560 | 312 | 0.395 | 0.84 |
+| block | 2 | 3340 | 1668 | 2.106 | 0.17 |
+| Residuals | 10 | 7920 | 792	 |  |
+

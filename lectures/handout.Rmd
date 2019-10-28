@@ -1,0 +1,80 @@
+---
+title: "Designing experiments"
+subtitle: "A practice using superstitions"
+author: "Pedro J. Aphalo"
+date: "3 September 2017"
+output: 
+  ioslides_presentation: 
+    fig_height: 4
+    fig_width: 6
+    keep_md: yes
+    transition: faster
+    widescreen: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Instructions
+
+You will work in groups to design an experiment. The number of groups should be at least four, and even.
+
+The exercise has four stages:
+
+1. design of an experiment
+1. peer review after swapping papers between groups
+1. answers to reviewers
+1. grading (by teacher)
+
+As the exercise will be graded, make sure that all papers include the full names of the students in the group. Do return the papers at the end of the class.
+
+## Superstitions (choose one)
+
+1. An apple a day keeps the doctor away.
+1. Eating chocolate causes zits (finni).
+1. Shaving your legs makes the hair grow back more densely.
+1. Drinking coffee will stunt a child’s growth.
+1. If you swim right after eating, you will get cramps.
+1. If you go outside when your head is wet, you’ll catch a cold.
+1. A red ribbon placed on a child who has been sick will keep the illness from returning.
+1. A half onion placed under the bed of a sick person will reduce the fever.
+1. Break a mirror and you will have seven years of bad luck.
+1. If you blow out all the candles on your birthday cake with the first puff you will get your wish.
+ 
+## Design round (20 minutes)
+
+Your design can be in the form of a list or written description, but it must be readable enough that others can evaluate it. Include all the following elements in as much detail as possible:
+
+- hypothesis to be tested
+- experimental units
+- independent variable(s)
+- control
+- response variable(s) and how you’ll measure it/them
+- the most important background variables to control
+- replication (sample size)
+
+## Peer Review round (10 min)
+
+Consider both major flaws and weaknesses of the proposed experiment. Distinguish between what you consider that _must_ be changed to make the experiment valid, and what _could_ be chnaged to improve its reliability or improve efficiency (decrease the amount of work or cost).
+
+- Does it adequately test the stated hypothesis? 
+- Are the variables (independent, response, and controlled) and control appropriate and described in sufficient detail? 
+- Is the sample size sufficient? 
+- For each of these questions justify your answer.
+- What improvements to the design can you suggest?
+
+## Response round (10 min)
+
+Consider:
+
+- Are the criticisms due an actual problem, or a missunderstanding due to a poor description of the design.
+- Are the flaws described in the peer review real?
+- Are the solutions suggested by the reviewers good? or can you suggest a better alternative?
+- Are the suggested improvements applicable? do they increase the need for resources?
+- Consider alternative solutions to the problems found by reviewers, and if better, then include them in your answer.
+
+## References
+
+Hoefnagels, Mariëlle H.; Rippel, Scott A. (2003) "USING Superstitions & Sayings To Teach Experimental Design in Beginning & Advanced Biology Classes", The American Biology Teacher 65(4):263-268. 2003, (https://doi.org/10.1662/0002-7685(2003)065[0263:USSTTE]2.0.CO;2)
+
