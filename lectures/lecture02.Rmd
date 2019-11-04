@@ -1,15 +1,16 @@
 ---
-title: "Lecture 2: Core ideas"
+title: "2: Core ideas"
 subtitle: PBIO-03 Design and planning of experiments
 author: "Pedro J. Aphalo"
-date: "6 September, 2017"
+date: "November 2019"
 output: 
   ioslides_presentation: 
     fig_height: 4
-    fig_width: 6
+    fig_width: 5
     keep_md: yes
     transition: faster
     widescreen: yes
+runtime: shiny
 params:
  d: !r Sys.Date() 
 bibliography: design-exp.bib
@@ -19,8 +20,11 @@ bibliography: design-exp.bib
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-```{r}
+```{r, message=FALSE}
+library(shiny)
 library(ggplot2)
+library(ggpmisc)
+library(gganimate)
 ```
 
 # Statistics (a reminder)
@@ -124,11 +128,15 @@ TRUE
 - They are of some use, if taken only as a guide to the quality of the evidence.
 - Nowadays many statisticians prefer confidence intervals to significance tests,
 - and/or model selection based on information criteria (AIC, BIC),
-- there is at least one scientific journal that has banned the use of pp-values!
+- there is at least one scientific journal that has banned the use of _p_-values!
 
 ## ASA statement (on-line 2016-03-07)
 
-The American Statistical Society released an official statement [@Wasserstein2016] against the predominance of significance tests and _p_-values as a core part of Statistics practice and teaching . See also the blog post (After 150 Years, the ASA Says No to _P_-values)[https://matloff.wordpress.com/2016/03/07/after-150-years-the-asa-says-no-to-p-values/] by Norman Matloff. Or I would rather say, restric its use to situations where it is useful.
+The American Statistical Society released an official statement [@Wasserstein2016] against the predominance of significance tests and _p_-values as a core part of Statistics practice and teaching:  [The ASA statement](https://amstat.tandfonline.com/doi/full/10.1080/00031305.2016.1154108#.Xb_1B9VS9aQ). 
+
+See also the blog posts [After 150 Years, the ASA Says No to _P_-values](https://matloff.wordpress.com/2016/03/07/after-150-years-the-asa-says-no-to-p-values/) and  [Further comments on the ASA manifesto](https://matloff.wordpress.com/2016/03/09/further-comments-on-the-asa-manifesto/) by Norman Matloff.
+
+**Take home message:** restric use of the _p_-value to situations where it is useful.
 
 # Design of experiments 
 
@@ -143,8 +151,21 @@ The American Statistical Society released an official statement [@Wasserstein201
 ## Reducing estimate variation
 
 - Replication:
-  S2x¯=S2xn
-  
+ $S^2_{\overline x} = S^2_x / n$
+
+## Simulation experiment: linear regression
+
+![Using artificial data (n = 6)][regression10]
+
+## Simulation experiment: linear regression
+
+![Using artificial data (n = 6)][regression01]
+
+## Simulation experiment: linear regression
+
+![Using artificial data (n = 6)][regression01006]
+![Using artificial data (n = 100)][regression01100]
+
 ## Range of validity
 
 - Using a wide range of conditions → increases random variability (e.g. seedlings from seeds from an out-crossing population vs. seeds from a homozygous line vs. a clone from tissue culture)
@@ -233,6 +254,10 @@ this is usually o.k., but one should be careful to check if the expected effects
 
 - The books Planning of Experiments [@Cox1958] and Statistics and Scientifc Method [@Diggle2011] can be recommended as they focus mainly on the logic behind the different designs at an introductory level.
 
-- The book Statistical Principles for the Design of Experiments [@Mead2012] goes into more depth, especially in relation to calculation procedures for many 'classical' designs.
-
 ## References {.smaller}
+
+
+[regression10]: figures/regression_anim_b1.gif "regression10"
+[regression01]: figures/regression_anim_b01.gif "regression01"
+[regression01100]: figures/regression_anim_b01_100.gif "regression01100"
+[regression01006]: figures/regression_anim_b01_6.gif "regression01006"
