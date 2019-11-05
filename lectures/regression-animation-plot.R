@@ -3,16 +3,16 @@ library(ggplot2)
 library(ggpmisc)
 library(gganimate)
 
-num_replicates <- 25
-num_observations <- 100L
+num_simulations <- 25
+num_observations <- 10L
 num_intercept <- 0
 num_slope <- 0.1
 num_sd <- 6
 
-x <- rep(seq(from = 0, to = 50, length.out = num_observations), num_replicates)
+x <- rep(seq(from = 0, to = 50, length.out = num_observations), num_simulations)
 y <- num_intercept + x * num_slope +
-  c(rnorm(n = num_observations * num_replicates, mean = 0, sd = num_sd))
-my.data <- data.frame(x, y, replicate = factor(rep(1:num_replicates, times = rep(num_observations, num_replicates))))
+  c(rnorm(n = num_observations * num_simulations, mean = 0, sd = num_sd))
+my.data <- data.frame(x, y, replicate = factor(rep(1:num_simulations, times = rep(num_observations, num_simulations))))
 
 p <-
   ggplot(my.data, aes(x, y, colour = replicate)) +
@@ -22,7 +22,6 @@ p <-
   geom_point() +
   geom_rug() +
   geom_smooth(method = "lm", formula = y ~ x) +
-#  stat_poly_eq(formula = y ~ x) +
   scale_x_continuous(name = "x, fixed") +
   scale_y_continuous(name = "y, with error") +
   scale_color_discrete(guide = FALSE) +
@@ -46,3 +45,31 @@ anim_save("figures/regression_anim_b01_100.gif")
 # } else {
 #   p + stat_fit_tb(label.x = "left", size = 5)
 # }
+
+library(lme4)
+
+num_simulations <- 1000L
+num_observations <- 10L
+num_intercept <- 0
+num_slope <- 0.2
+num_sd <- 6
+
+x <- rep(seq(from = 0, to = 50, length.out = num_observations), num_simulations)
+y <- num_intercept + x * num_slope +
+  c(rnorm(n = num_observations * num_simulations, mean = 0, sd = num_sd))
+my.data <- data.frame(x, y, replicate = factor(rep(1:num_simulations, times = rep(num_observations, num_simulations))))
+
+mf_6.ls <- lmList(y ~ x | replicate, data = my.data)
+
+sum(coef(summary(mf_6.ls))[ , 4, "x"] < 0.05) / num_simulations
+
+sum(coef(summary(mf_6.ls))[ , 4, "(Intercept)"] < 0.05) / num_simulations
+
+ggplot(data.frame(a = coef(summary(mf_6.ls))[ , 1, "(Intercept)"]), aes(x = a)) +
+  stat_bin() +
+  geom_vline(xintercept = num_intercept, colour = "yellow")
+
+ggplot(data.frame(b = coef(summary(mf_6.ls))[ , 1, "x"]), aes(x = b)) +
+  stat_bin() +
+  geom_vline(xintercept = num_slope, colour = "yellow")
+

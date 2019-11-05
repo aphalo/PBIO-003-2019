@@ -15,16 +15,9 @@ params:
 bibliography: design-exp.bib
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-```
 
-```{r, message=FALSE}
-library(shiny)
-library(ggplot2)
-library(ggpmisc)
-library(gganimate)
-```
+
+
 
 # Statistics (a reminder)
 
