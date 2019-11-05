@@ -1,21 +1,18 @@
 ---
 title: "Designing experiments"
+subtitle: "A practice using superstitions"
 author: "Pedro J. Aphalo"
 date: "29 October 2019"
-output:
-  beamer_presentation: default
-  ioslides_presentation:
+output: 
+  ioslides_presentation: 
     fig_height: 4
     fig_width: 6
     keep_md: yes
     transition: faster
     widescreen: yes
-subtitle: A practice using superstitions
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-```
+
 
 ## Instructions
 
@@ -43,7 +40,7 @@ As the exercise will be graded, make sure that all papers include the full names
 1. Break a mirror and you will have seven years of bad luck.
 1. If you blow out all the candles on your birthday cake with the first puff you will get your wish.
  
-## Design round (15 minutes)
+## Design round (20 minutes)
 
 Your design can be in the form of a list or written description, but it must be readable enough that others can evaluate it. Include all the following elements in as much detail as possible:
 
